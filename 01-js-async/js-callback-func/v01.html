@@ -1,42 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>js-callback-func</title>
-</head>
-<body>
-  <h1>Users list</h1>
-<ul id="userList"></ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js-callback-func</title>
+  </head>
+  <body>
+    <h1>Users list</h1>
+    <ul id="userList"></ul>
 
-<script>
-  function fetchUsers(callback){
-    setTimeout(()=>{
-      const users = [
-        {id: 1, name: 'Peter'},
-        {id: 2, name: 'John'},
-        {id: 3, name: 'Bob'},
-      ];
-      callback(users)
-    }, 2000) 
-  }
+    <script>
+      const fetchUsers = (callback) => {
+        setTimeout(() => {
+          const users = [
+            { id: 1, name: 'Peter' },
+            { id: 2, name: 'Joe' },
+            { id: 3, name: 'Dilan' },
+          ];
+          callback(users);
+        }, 2000);
+      };
 
-  function displayUsers(users) {
-    const userList = document.getElementById('userList')
-    users.forEach(user => {
-      const listItem = document.createElement('li');
-      listItem.textContent = user.name;
-      userList.appendChild(listItem);
-    })
-  }
+      const displayUsers = (users) => { 
+        const userList = document.getElementById('userList');
+        users.forEach(user => {
+          const listItem = document.createElement('li');
+          listItem.textContent = user.name;
+          userList.appendChild(listItem)
+        });
+      };
 
-  fetchUsers(users => {
-    displayUsers(users)
+      fetchUsers((users) => {
+        displayUsers(users);
+      });
 
-  })
+      // function fetchUsers(callback){
+      //   setTimeout(()=>{
+      //     const users = [
+      //       {id: 1, name: 'Peter'},
+      //       {id: 2, name: 'John'},
+      //       {id: 3, name: 'Bob'},
+      //     ];
+      //     callback(users)
+      //   }, 2000)
+      // }
 
+      // function displayUsers(users) {
+      //   const userList = document.getElementById('userList')
+      //   users.forEach(user => {
+      //     const listItem = document.createElement('li');
+      //     // до створеного елемента li додається текст за допомогою -textContent. Текст отримується з об'єкта user- властивість- name.
+      //     listItem.textContent = user.name;
+      //     // створений елемент li додадається до списку ul (id: userList)
+      //     userList.appendChild(listItem);
+      //   })
+      // }
 
+      // fetchUsers(users => {
+      //   displayUsers(users)
 
-</script>
-</body>
+      // })
+    </script>
+  </body>
 </html>
