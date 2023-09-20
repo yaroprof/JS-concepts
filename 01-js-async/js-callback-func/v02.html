@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js-callback-func -v02</title>
+  </head>
+  <body>
+    <h1></h1>
+    <ul id="result"></ul>
+
+    <script>
+     
+      const fetchData = (callback) => {
+        const xhr = new XMLHttpRequest()
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/2", true )
+
+        // onreadystatechange - властивість об'єкта XMLHttpRequest, яка визначає функцію, яка буде викликана при зміні статусу запита
+        xhr.onreadystatechange = function () {
+          // стан об'єкта: 4: DONE - операція завершена, і дані повністю отримані.
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText)
+            callback(data)
+          }
+        }
+        xhr.send()
+      }
+
+      const handleData = (data) => {
+        const resultElement = document.getElementById('result');
+        resultElement.textContent = `Title: ${data.title}`;
+      }
+
+
+      fetchData(handleData)
+
+      
+    </script>
+  </body>
+</html>
+
