@@ -1,0 +1,22 @@
+// using callback functions
+const fetchRequest = (callback) => {
+  fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Error request');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      callback(data);
+    })
+    .catch((error) => {
+      console.log('Error with fentch and callback');
+      console.log(error);
+    });
+};
+
+fetchRequest(function (data) {
+  console.log('Result with fetch & callback');
+  console.log(data);
+});
