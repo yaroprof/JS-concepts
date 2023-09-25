@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-event-Change Text</title>
+    <style>
+      /* Сучасні CSS стилі */
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+        /* Використовуємо flexbox для центрування */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Займає весь видимий висоту екрану */
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+      /* Style for the input element */
+      #myInput {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      /* Style for the paragraph element */
+      #output {
+        font-size: 18px;
+        color: #333;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="myInput" />
+      <p id="output">Here appear text</p>
+    </div>
+
+    <script>
+      const input = document.getElementById('myInput');
+      const output = document.getElementById('output');
+      input.addEventListener('input', ()=>{
+        output.textContent = `You input: ${input.value}`
+      })
+    </script>
+  </body>
+</html>
